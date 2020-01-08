@@ -15,29 +15,29 @@ new Vue({
     async createRestaurant(){
       try {
         await axios({
-        method: "POST",
-        url: "http://localhost:1337/graphql",
-        data: {
-          query: `
-            mutation {
-              createRestaurant(input: {
-                data: {
-                  name: "${this.name}",
-                  description: "${this.description}"
-                }
-              }) {
-                restaurant {
-                  name
-                  description
+          method: "POST",
+          url: "https://dry-citadel-76623.herokuapp.com/graphql",
+          data: {
+            query: `
+              mutation {
+                createRestaurant(input: {
+                  data: {
+                    name: "${this.name}",
+                    description: "${this.description}"
+                  }
+                }) {
+                  restaurant {
+                    name
+                    description
+                  }
                 }
               }
-            }
-          `
-        }
+            `
+          }
         });
-        this.name = ""
-        this.description = ""
-        this.getRestaurants()
+      this.name = ""
+      this.description = ""
+      this.getRestaurants()
       } catch (error) {
         console.error(error);
       }
@@ -47,7 +47,7 @@ new Vue({
       try {
         await axios({
         method: "POST",
-        url: "http://localhost:1337/graphql",
+        url: "https://dry-citadel-76623.herokuapp.com/graphql",
         data: {
           query: `
             mutation {
@@ -74,7 +74,7 @@ new Vue({
       try {
         var result = await axios({
           method: "POST",
-          url: "http://localhost:1337/graphql",
+          url: "https://dry-citadel-76623.herokuapp.com/graphql",
           data: {
             query: `
               query getRestaurants {
