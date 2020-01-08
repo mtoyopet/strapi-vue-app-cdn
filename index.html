@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-container class="mt-5">
+        <div class="display-2 text-center">チェーン店メモったろう君</div>
+
+        <v-container>
+          <v-form>
+            <v-container>
+              <v-row>
+                <v-col
+                  cols="12"
+                  md="3"
+                >
+                  <v-text-field
+                    v-model="name"
+                    label="お店の名前"
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                  md="6"
+                >
+                  <v-text-field
+                    v-model="description"
+                    label="どんなお店？"
+                  ></v-text-field>
+                </v-col>
+                <v-col>
+                  <v-btn 
+                    class="primary"
+                    v-on:click="createRestaurant"
+                    align="center"
+                    >
+                    追加する
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </v-container>
+
+        <v-container>
+          <v-row>
+            <v-col 
+              v-for="item in restaurants" 
+              v-bind:key="item.id" 
+              cols="3"
+            >
+              <v-card
+                class="mb-2"
+                max-width="400"
+                cols="3"
+              >
+                <v-card-title>{{ item.name }}</v-card-title>
+                <v-card-text class="text--primary">
+                  <div>{{ item.description }}</div>
+                </v-card-text>
+                <v-btn
+                  icon
+                  small
+                  class="red--text mr-2"
+                  v-on:click="deleteRestaurant(item.id)"
+                >
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+
+      </v-container>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
